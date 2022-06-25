@@ -8,9 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%#= render 'layout/google_analytcis' if session[:cookies_accepted] == true %>
   </head>
 
   <body>
+    <%= session[:cookies_accepted] %>
     <%= yield %>
+    <%= turbo_frame_tag :cookies_modal, src: cookies_path if session[:cookies_accepted].nil? %>
   </body>
 </html>
